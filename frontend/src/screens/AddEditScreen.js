@@ -5,6 +5,7 @@ import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { DateInput } from "../components/dateInput";
 import { UserCheck } from "lucide-react-native";
 import { useNavigation } from "@react-navigation/native";
+import { CreateNewPerson, UpdatePerson } from "../servers/crud";
 
 export function AddEditScreen(id) {
     const [person, setPerson] = useState();
@@ -37,41 +38,16 @@ export function AddEditScreen(id) {
         }
     }, [])
 
-    async function CreateNewPerson() {
-        try {
-            const formattedDate = birthDate ? new Date(birthDate).toISOString().split("T")[0] : null;
-
-            const response = await axios.post(`${process.env.EXPO_PUBLIC_URL}/people`, {
-                firstName: name, lastName, email, phone, birthDate: formattedDate
-            })
-            console.log(response.data);
-            navigation.navigate("HomeScreen")
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    async function UpdatePerson() {
-        try {
-            const dateOfBirth = birthDate.toString()
-            const response = await axios.put(`${process.env.EXPO_PUBLIC_URL}/people/${id.route.params}`, {
-                firstName: name, lastName, email, phone, birthDate: dateOfBirth
-            })
-            console.log(response.data);
-            navigation.navigate("HomeScreen")
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     async function SavePerson() {
         console.log("salvando pessoa")
         if (person) {
             console.log("tem pessoa")
-            UpdatePerson()
+            UpdatePerson({name, lastName, email, phone, birthDate}, id.route.params)
+            navigation.navigate("HomeScreen")
         } else {
             console.log("não tem pessoa")
-            CreateNewPerson()
+            CreateNewPerson({name, lastName, email, phone, birthDate})
+            navigation.navigate("HomeScreen")
         }
     }
 
