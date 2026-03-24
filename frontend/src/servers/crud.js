@@ -7,6 +7,14 @@ export async function GetPeople() {
     return(response.data)
 }
 
+export async function GetPerson(id) {
+    const response = await axios.get(`${process.env.EXPO_PUBLIC_URL}/people/${id}`)
+    console.log("pessoa: " + response.data)
+    console.log(`${process.env.EXPO_PUBLIC_URL}/people/${id}`)
+
+    return(response.data)
+}
+
 export async function DeletePerson(id) {
     try {
         const response = await axios.delete(`${process.env.EXPO_PUBLIC_URL}/people/${id}`)
@@ -18,6 +26,7 @@ export async function DeletePerson(id) {
 
 export async function CreateNewPerson(person) {
     try {
+        console.log(person)
         const formattedDate = person.birthDate ? new Date(birthDate).toISOString().split("T")[0] : null;
 
         const response = await axios.post(`${process.env.EXPO_PUBLIC_URL}/people`, {

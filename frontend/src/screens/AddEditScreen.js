@@ -17,13 +17,9 @@ export function AddEditScreen(id) {
     const navigation = useNavigation()
 
     useEffect(() => {
-        async function GetPerson(id) {
-            const response = await axios.get(`${process.env.EXPO_PUBLIC_URL}/people/${id.route.params}`)
-            console.log("pessoa: " + response.data)
-            console.log(`${process.env.EXPO_PUBLIC_URL}/people/${id.route.params}`)
-
-            const provisoryPerson = response.data;
-            setPerson(response.data)
+        async function GetPerson() {
+            const provisoryPerson = await GetPerson(id.route.params)
+            setPerson(provisoryPerson)
 
             setName(provisoryPerson.firstName)
             setLastName(provisoryPerson.lastName)
@@ -42,11 +38,11 @@ export function AddEditScreen(id) {
         console.log("salvando pessoa")
         if (person) {
             console.log("tem pessoa")
-            UpdatePerson({name, lastName, email, phone, birthDate}, id.route.params)
+            await UpdatePerson({name, lastName, email, phone, birthDate}, id.route.params)
             navigation.navigate("HomeScreen")
         } else {
             console.log("não tem pessoa")
-            CreateNewPerson({name, lastName, email, phone, birthDate})
+            await CreateNewPerson({name, lastName, email, phone, birthDate})
             navigation.navigate("HomeScreen")
         }
     }

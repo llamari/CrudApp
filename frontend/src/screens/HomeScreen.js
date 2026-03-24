@@ -1,7 +1,6 @@
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../styles/styles'
 import { useEffect, useState } from 'react'
-import axios from 'axios';
 import { Plus } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CardPersonal } from '../components/cardPersonal';
@@ -11,12 +10,13 @@ export function HomeScreen() {
     const [people, setPeople] = useState([]);
     const navigation = useNavigation()
 
+    async function Get() {
+        const people = await GetPeople();
+        console.log(people)
+        setPeople(people)
+    }
+
     useEffect(() => {
-        async function Get() {
-            const people = await GetPeople();
-            console.log(people)
-            setPeople(people)
-        }
         Get()
     }, [])
 
@@ -35,6 +35,7 @@ export function HomeScreen() {
                         <CardPersonal
                             item={item}
                             navigation={navigation}
+                            Refresh={Get}
                         />
                     }
                     style={styles.cardScrollView}
