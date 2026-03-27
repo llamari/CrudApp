@@ -1,11 +1,10 @@
 import { styles } from "../styles/styles";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { DateInput } from "../components/dateInput";
 import { UserCheck } from "lucide-react-native";
 import { useNavigation } from "@react-navigation/native";
-import { CreateNewPerson, UpdatePerson } from "../servers/crud";
+import { CreateNewPerson, GetPerson, UpdatePerson } from "../servers/crud";
 
 export function AddEditScreen(id) {
     const [person, setPerson] = useState();
@@ -17,7 +16,7 @@ export function AddEditScreen(id) {
     const navigation = useNavigation()
 
     useEffect(() => {
-        async function GetPerson() {
+        async function GetSpecificPerson() {
             const provisoryPerson = await GetPerson(id.route.params)
             setPerson(provisoryPerson)
 
@@ -29,10 +28,10 @@ export function AddEditScreen(id) {
         }
 
         if (id.route.params) {
-            GetPerson(id)
+            GetSpecificPerson(id)
             console.log(id)
         }
-    }, [])
+    }, [id])
 
     async function SavePerson() {
         console.log("salvando pessoa")

@@ -4,7 +4,12 @@ import { DeletePerson } from '../servers/crud';
 import { styles } from '../styles/styles';
 import { Pencil, Trash } from 'lucide-react-native';
 
-export function CardPersonal({item, navigation, Refresh}) {
+export function CardPersonal({ item, navigation, Refresh }) {
+    async function Delete() {
+        await DeletePerson(item.id.toString());
+        Refresh()
+    }
+    
     return (
         <View style={styles.personCard}>
             <View style={styles.titleContainer}>
@@ -13,10 +18,7 @@ export function CardPersonal({item, navigation, Refresh}) {
                     <TouchableOpacity onPress={() => navigation.navigate("AddEditScreen", item.id.toString())}>
                         <Pencil size={16} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {
-                        DeletePerson(item.id.toString());
-                        Refresh()
-                    }}>
+                    <TouchableOpacity onPress={() => Delete()}>
                         <Trash size={16} />
                     </TouchableOpacity>
                 </View>

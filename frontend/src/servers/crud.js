@@ -27,7 +27,7 @@ export async function DeletePerson(id) {
 export async function CreateNewPerson(person) {
     try {
         console.log(person)
-        const formattedDate = person.birthDate ? new Date(birthDate).toISOString().split("T")[0] : null;
+        const formattedDate = person.birthDate ? new Date(person.birthDate).toISOString().split("T")[0] : null;
 
         const response = await axios.post(`${process.env.EXPO_PUBLIC_URL}/people`, {
             firstName: person.name, lastName: person.lastName, email: person.email, phone: person.phone, birthDate: formattedDate

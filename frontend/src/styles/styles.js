@@ -124,5 +124,26 @@ export const styles = StyleSheet.create({
         color: "#f4e6fc",
         fontWeight: 600,
         fontSize: 16
+    },
+    searchContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#e8d8f2",
+        marginVertical: 20,
+        marginHorizontal: 20,
+        paddingBottom: 4,
+        width: "80%",
+        padding: 4,
+        borderRadius: 5
+    },
+    searchInput: {
+        flex: 1,
+        color: "#28033d",
+        fontSize: 16,
+        marginRight: 10,
+    },
+    errorMessage :{
+        width: "80%",
+        color: "#28033d"
     }
 })
