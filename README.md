@@ -75,6 +75,10 @@ O objetivo deste projeto é oferecer um app móvel simples para gerenciar regist
 - Usou Axios para abstrair requisições HTTP.
 - Separou a lógica de UI (telas e componentes) da lógica de dados (servidor e chamadas API).
 - Criação/edição em tela dedicada e leitura na tela principal com navegação de stack.
+- O filtro funciona com um State, que se atualiza conforme algo é digitado na barra de pesquisa. A partir disso, ele seleciona apenas as pessoas que tenham o termo digitado no nome ou sobrenome.
+- Há um State de loading, que mostra se a API está sendo chamada ou não. Se ele for verdadeiro, aparece um ActivityIndicator na tela.
+- Há um State de hasFailed, que indica se a requisição à API foi mal sucedida. Se ele for verdadeiro, aparece uma mensagem informando que houve um erro ao chamar a API.
+- Se loading e hasFailed forem falsos, a requisição foi bem sucedida e os resultados são mostrados. 
 
 ## 🎥 Demonstração
 Assista à demonstração: [Vídeo do CRUDApp](https://youtube.com/shorts/mZAthq5Xnig?feature=share)
