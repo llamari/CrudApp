@@ -1,20 +1,20 @@
 {
   "people": [
     {
-      "firstName": "Lara ",
-      "lastName": "Samari",
-      "email": "larasamari@gmail.com",
-      "phone": "112345677890",
-      "birthDate": "2026-03-27",
-      "id": "RdRT9EtNt6E"
-    },
-    {
-      "firstName": "Beea",
-      "lastName": "Vingrieti",
-      "email": "vingrieti@gmail.com",
+      "firstName": "Beatriz",
+      "lastName": "Vinguerti",
+      "email": "bvinguerti@gmail.com",
       "phone": "00987654312",
       "birthDate": "2026-03-27",
       "id": "_EKLj5RmRwY"
+    },
+    {
+      "firstName": "Sara",
+      "lastName": "Lamari",
+      "email": "saralamarisilva@Gmail.com",
+      "phone": "19983289665",
+      "birthDate": "2026-03-31",
+      "id": "NTQeQJW"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
