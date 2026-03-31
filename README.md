@@ -78,5 +78,3 @@ O objetivo deste projeto é oferecer um app móvel simples para gerenciar regist
 
 ## 🎥 Demonstração
 Assista à demonstração: [Vídeo do CRUDApp](https://youtube.com/shorts/mZAthq5Xnig?feature=share)
-
-<iframe width="560" height="315" src="https://youtube.com/shorts/mZAthq5Xnig?feature=share" frameborder="0" allowfullscreen></iframe>
